@@ -1,0 +1,20 @@
+{
+    "name": "vincet/admin-bundle",
+    "type": "symfony-bundle",
+    "description": "Symfony VinceTAdminBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vincent Touzet",
+            "email": "vincent.touzet@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2",
+        "sonata-project/admin-bundle": "dev-master"
+    },
+    "autoload": {
+        "psr-0": { "VinceT\\AdminBundle": "" }
+    },
+    "target-dir": "VinceT/AdminBundle"
+}
