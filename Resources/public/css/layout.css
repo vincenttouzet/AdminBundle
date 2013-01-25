@@ -30,11 +30,8 @@ body.sonata-bc {
 }
 
 .sonata-bc div.connection {
-    position: absolute;
-    left: 50%;
-    top: 35%;
     width: 460px;
-    margin: -130px 0 0 -250px;
+    margin: 50px auto;
     box-shadow: 2px 2px 10px #ccc;
     border: 1px solid #ddd;
     border-radius: 6px;

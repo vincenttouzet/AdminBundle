@@ -28,12 +28,11 @@ file that was distributed with this source code.
             <!-- jQuery code -->
             <link rel="stylesheet" href="{{ asset('bundles/sonatajquery/themes/flick/jquery-ui-1.8.16.custom.css') }}" type="text/css" media="all" />
 
-            <link rel="stylesheet" href="{{ asset('bundles/vincetadmin/bootstrap/css/bootstrap.css') }}" type="text/css" media="all"  />
-            <link rel="stylesheet" href="{{ asset('bundles/vincetadmin/bootstrap/css/bootstrap-responsive.css') }}" type="text/css" media="all" />
+            <link rel="stylesheet" href="{{ asset(admin_theme_handler.getUri('css/bootstrap.min.css')) }}" type="text/css" media="all" />
 
             <!-- base application asset -->
             <link rel="stylesheet" href="{{ asset('bundles/vincetadmin/css/layout.css') }}" type="text/css" media="all" />
-            <link rel="stylesheet" href="{{ asset('bundles/vincetadmin/css/colors.css') }}" type="text/css" media="all" />
+            <link rel="stylesheet" href="{{ asset('bundles/sonataadmin/css/colors.css') }}" type="text/css" media="all" />
         {% endblock %}
 
         {% block javascripts %}
@@ -41,12 +40,11 @@ file that was distributed with this source code.
             <script src="{{ asset('bundles/sonatajquery/jquery-ui-1.8.23.js') }}" type="text/javascript"></script>
             <script src="{{ asset('bundles/sonatajquery/jquery-ui-i18n.js') }}" type="text/javascript"></script>
 
-            <script src="{{ asset('bundles/sonataadmin/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
+            <script src="{{ asset(admin_theme_handler.getUri('js/bootstrap.min.js')) }}" type="text/javascript"></script>
 
             <script src="{{ asset('bundles/sonataadmin/qtip/jquery.qtip-1.0.0-rc3.min.js') }}" type="text/javascript"></script>
             <script src="{{ asset('bundles/sonataadmin/jquery/jquery.form.js') }}" type="text/javascript"></script>
             <script src="{{ asset('bundles/sonataadmin/base.js') }}" type="text/javascript"></script>
-            <script src="{{ asset('bundles/vincetadmin/js/menu.js') }}" type="text/javascript"></script>
         {% endblock %}
 
         <title>
@@ -211,6 +209,7 @@ file that was distributed with this source code.
                 <div class="pull-right clearfix">
                     <span class="label"><a href="http://sonata-project.org" rel="noreferrer" style="text-decoration: none; color: black">Sonata Project</a></span>
                 </div>
+                {% include 'VinceTAdminBundle:Theme:footer_select.html.twig' %}
             {% endblock %}
         </div>
     </body>

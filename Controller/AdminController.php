@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of VinceTBaseBundle for Symfony2
+ * This file is part of VinceTAdminBundle for Symfony2
  *
  * @category VinceT
  * @package  VinceTAdminBundle

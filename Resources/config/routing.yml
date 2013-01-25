@@ -1,0 +1,4 @@
+vince_t_admin_theme_change:
+    pattern: /vince_t_admin/theme/change 
+    defaults: { _controller: VinceTAdminBundle:Theme:change }
+    requirements: 

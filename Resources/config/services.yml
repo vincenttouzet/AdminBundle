@@ -1,7 +1,15 @@
 parameters:
-#    vince_t_admin.example.class: VinceT\AdminBundle\Example
+    vince_t.admin.twig.extension.class: VinceT\AdminBundle\Twig\Extension\VinceTAdminExtension
+    vince_t.admin.theme.handler.class: VinceT\AdminBundle\Theme\ThemeHandler
 
 services:
-#    vince_t_admin.example:
-#        class: %vince_t_admin.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    vince_t.admin.twig.extension:
+        class: %vince_t.admin.twig.extension.class%
+        arguments:
+            - @service_container
+        tags:
+            - { name: twig.extension }
+    vince_t.admin.theme.handler:
+        class: %vince_t.admin.theme.handler.class%
+        arguments:
+            - @service_container
