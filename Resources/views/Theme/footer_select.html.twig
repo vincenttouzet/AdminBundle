@@ -1,7 +1,8 @@
 {% if admin_theme_handler.getAvailableThemes() | length > 1 %}
     <div class="pull-left">
         <form action="{{ path('vince_t_admin_theme_change') }}" method="post" id="admin_themes_selector">
-            <select name="admin_theme" onchange="javascript:document.getElementById('admin_themes_selector').submit()">
+            <label for="admin_theme" class="pull-left">{{ 'vince_t_admin.theme.label'|trans({}, 'VinceTAdminBundle') }}&nbsp;:&nbsp;</label>
+            <select name="admin_theme" id="admin_theme" class="pull-left" onchange="javascript:document.getElementById('admin_themes_selector').submit()">
                 {% for theme in admin_theme_handler.getAvailableThemes() %}
                     <option value="{{ theme.getIdentifier() }}" {% spaceless %}
                         {% if theme.getIdentifier() == admin_theme_handler.getCurrentTheme().getIdentifier() %}

@@ -1,6 +1,10 @@
 parameters:
     vince_t.admin.twig.extension.class: VinceT\AdminBundle\Twig\Extension\VinceTAdminExtension
     vince_t.admin.theme.handler.class: VinceT\AdminBundle\Theme\ThemeHandler
+    vince_t.admin.menu.renderer.template: "VinceTAdminBundle::menu.html.twig"
+    vince_t.admin.menu.builder.class: VinceT\AdminBundle\Menu\MenuBuilder
+    vince_t.admin.menu.main.class: VinceT\AdminBundle\Menu\MenuItem
+    vince_t.admin.menu.factory.class: VinceT\AdminBundle\Menu\MenuFactory
 
 services:
     vince_t.admin.twig.extension:
@@ -13,3 +17,30 @@ services:
         class: %vince_t.admin.theme.handler.class%
         arguments:
             - @service_container
+
+
+    vince_t.admin.menu.factory:
+        class: %vince_t.admin.menu.factory.class%
+        arguments: [@service_container]
+
+    vince_t.admin.menu.builder:
+        class: %vince_t.admin.menu.builder.class%
+        arguments: [@vince_t.admin.menu.factory, @service_container]
+
+    vince_t.admin.menu.renderer:
+        class: Knp\Menu\Renderer\TwigRenderer
+        arguments: 
+            - @twig
+            - %vince_t.admin.menu.renderer.template%
+            - []
+        tags:
+            - { name: knp_menu.renderer, alias: admin_menu_renderer }
+
+    vince_t.admin.menu.main:
+        class: %vince_t.admin.menu.main.class%
+        factory_service: vince_t.admin.menu.builder
+        factory_method: createMainMenu
+        arguments: [@request]
+        scope: request 
+        tags:
+            - { name: knp_menu.menu, alias: admin_menu_main }

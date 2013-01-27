@@ -50,6 +50,43 @@ class VinceTAdminExtension extends \Twig_Extension implements ContainerAwareInte
     }
 
     /**
+     * Gets filters
+     *
+     * @return array
+     */
+    public function getFilters()
+    {
+        return array(
+            'render_attributes' => new \Twig_Filter_Method($this, 'renderAttributes', array('is_safe' => array('html'))),
+        );
+    }
+
+    /**
+     * renderAttributes
+     *
+     * @param array $attributes attributes to render
+     * @param array $defaults   defaults value
+     *
+     * @return [type]
+     */
+    public function renderAttributes(array $attributes, array $defaults = array())
+    {
+        $s = '';
+        foreach ($attributes as $name => $value) {
+            if ( array_key_exists($name, $defaults) ) {
+                $value = $value.' '.$defaults[$name];
+            }
+            $s .= sprintf(' %s="%s"', $name, $value);
+        }
+        foreach ($defaults as $name => $value) {
+            if ( !array_key_exists($name, $attributes) ) {
+                $s .= sprintf(' %s="%s"', $name, $value);
+            }
+        }
+        return $s;
+    }
+
+    /**
      * Gets global variables
      *
      * @return [type]
