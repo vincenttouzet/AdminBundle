@@ -14,6 +14,7 @@ namespace VinceT\AdminBundle\Menu;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Knp\Menu\FactoryInterface;
+use Knp\Menu\MenuItemInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use VinceT\AdminBundle\Event\MenuCreateEvent;
@@ -68,6 +69,8 @@ class MenuBuilder
     {
         $menu = $this->factory->createItem('root');
 
+        $menu->setCurrentUri($request->getBaseUrl().$request->getPathInfo());
+
         // create menu from admin pool
         $admin_pool = $this->container->get('sonata.admin.pool');
         foreach ($admin_pool->getDashboardGroups() as $group) {
@@ -86,4 +89,5 @@ class MenuBuilder
 
         return $menu;
     }
+
 }

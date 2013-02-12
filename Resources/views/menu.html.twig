@@ -2,7 +2,11 @@
 {% block root %}
     {% for group in item.children %}
         {% if group.children | length > 0 and group.displaychildren %}
-            <li{{ group.childrenattributes|render_attributes({'class':'dropdown'}) }}>
+            {% set _level1_class = '' %}
+            {% if group.isCurrent() or group.isCurrentAncestor() %}
+                {% set _level1_class = ' active' %}
+            {% endif %}
+            <li{{ group.childrenattributes|render_attributes({'class':'dropdown'~_level1_class}) }}>
                 {# display the link #}
                 {% if group.linkdisplayed %}
                     <a href="#"{{ group.linkattributes|render_attributes({'class':'dropdown-toggle', 'data-toggle':'dropdown'}) }}>
@@ -20,7 +24,11 @@
                 <ul class="dropdown-menu">
                     {% for link in group.children %}
                         {% if link.displayed %}
-                            <li{{ link.childrenattributes|render_attributes }}>
+                            {% set _level2_class = '' %}
+                            {% if link.isCurrent() or link.isCurrentAncestor() %}
+                                {% set _level2_class = ' active' %}
+                            {% endif %}
+                            <li{{ link.childrenattributes|render_attributes({'class':_level2_class}) }}>
                                 {# display the link #}
                                 {% if link.linkdisplayed or link.children|length > 0 %}
                                     <a href="{{ link.uri }}"{{ link.linkattributes|render_attributes }}>
@@ -42,7 +50,11 @@
                                     <ul class="dropdown-menu sub-menu">
                                         {% for sub_link in link.children %}
                                             {% if sub_link.displayed %}
-                                                <li{{ sub_link.childrenattributes|render_attributes }}>
+                                                {% set _level3_class = '' %}
+                                                {% if sub_link.isCurrent() or sub_link.isCurrentAncestor() %}
+                                                    {% set _level3_class = ' active' %}
+                                                {% endif %}
+                                                <li{{ sub_link.childrenattributes|render_attributes({'class':_level3_class}) }}>
                                                     {# display the link #}
                                                     {% if sub_link.linkdisplayed %}
                                                         <a href="{{ sub_link.uri }}"{{ sub_link.linkattributes|render_attributes }}>
@@ -69,7 +81,11 @@
             </li>
         {% else %}
             {% if group.displayed %}
-                <li{{ group.childrenattributes|render_attributes }}>
+                {% set _level1_class = '' %}
+                {% if group.isCurrent() or group.isCurrentAncestor() %}
+                    {% set _level1_class = ' active' %}
+                {% endif %}
+                <li{{ group.childrenattributes|render_attributes({'class':_level1_class}) }}>
                     {# display the link #}
                     {% if group.linkdisplayed %}
                         <a href="{{ group.uri }}"{{ group.linkattributes|render_attributes }}>
