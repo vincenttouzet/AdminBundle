@@ -81,4 +81,11 @@ vince_t_admin:
 
 This register the route to change the theme used.
 
+4) Install assets
+-----------------
+
+```
+php app/console assets:install
+```
+
 [1]: https://github.com/vincenttouzet/AdminBundle/blob/master/Resources/doc/add_theme.md
