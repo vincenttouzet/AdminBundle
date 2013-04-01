@@ -37,7 +37,9 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('default_theme')->end()
+                ->scalarNode('default_theme')
+                    ->defaultValue('default')
+                ->end()
                 ->arrayNode('themes')
                     ->prototype('array')
                     ->children()

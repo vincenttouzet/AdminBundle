@@ -79,7 +79,7 @@ class ThemeHandler implements ContainerAwareInterface
      */
     public function getDefaultTheme()
     {
-        $config = $this->container->getParameter('vince_t.admin.theme');
+        $config = $this->_getThemeConfig();
         return $this->getTheme($config['default_theme']);
     }
 
@@ -158,6 +158,13 @@ class ThemeHandler implements ContainerAwareInterface
                 $t->setName($conf['name']);
                 $t->setBasePath($conf['base_path']);
                 $this->_themes[$identifier] = $t;
+            }
+            if ( count($this->_themes) == 0 ) {
+                $t = new Theme();
+                $t->setIdentifier('default');
+                $t->setName('Default');
+                $t->setBasePath('bundles/vincetadmin/bootstrap/default');
+                $this->_themes['default'] = $t;
             }
         }
         return $this->_themes;
