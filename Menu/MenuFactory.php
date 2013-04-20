@@ -68,7 +68,8 @@ class MenuFactory extends RouterAwareFactory implements ContainerAwareInterface
             if ( !$options['admin'] instanceof AdminInterface ) {
                 $admin = $this->container->get('sonata.admin.pool')->getAdminByAdminCode($admin);
             }
-            $options['uri'] = $admin->generateUrl('list');
+            $action = isset($options['admin_action']) ? $options['admin_action'] : 'list';
+            $options['uri'] = $admin->generateUrl($action);
             $options['translationDomain'] = $admin->getTranslationDomain();
         }
         /**
