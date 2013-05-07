@@ -1,11 +1,9 @@
 VinceTAdminBundle
 =================
 
-This bundle extends the [**SonataAdminBundle**][1] and allow two functionnalities:
-* Manage the menu from other bundle
-* Choose a different design
+This bundle extends the [**SonataAdminBundle**][1] and allow the possibility to manage the menu from other bundle.
 
-See [**how to install and configure**][15]
+See [**how to install and configure**][2]
 
 Manage menu
 -----------
@@ -14,7 +12,7 @@ The SonataAdminBundle main menu (on top of all Admin pages) is generated with th
 
 This bundle extends the menu and allows everyone to modify this menu.
 
-The admin menu is generated with [**KnpMenu**][16] library. By default it retrieves all admin groups and labels Admin (like default menu renderer).
+The admin menu is generated with [**KnpMenu**][3] library. By default it retrieves all admin groups and labels Admin (like default menu renderer).
 
 To modify the admin menu juste create a listener :
 ```php
@@ -68,38 +66,8 @@ services:
 
 This bundle use a custom MenuItem class `VinceT\AdminBundle\Menu\MenuItem` that extends the `Knp\Menu\MenuItem`. It add new functions (to add dividers, nav headers, ...)
 
-Theme functionnality
---------------------
-
-There are currently 12 differents themes included with this bundle. These themes are from [**Bootswatch**][2].
-
-* [**Amelia**][3]
-* [**Cerulean**][4]
-* [**Cosmo**][5]
-* [**Cyborg**][6]
-* [**Journal**][7]
-* [**Readable**][8]
-* [**Simplex**][9]
-* [**Slate**][10]
-* [**Spacelab**][11]
-* [**Spruce**][12]
-* [**Superhero**][13]
-* [**United**][14]
 
 
 [1]: http://sonata-project.org/bundles/admin/master/doc/index.html
-[2]: http://bootswatch.com/
-[3]: http://bootswatch.com/amelia
-[4]: http://bootswatch.com/cerulean
-[5]: http://bootswatch.com/cosmo
-[6]: http://bootswatch.com/cyborg
-[7]: http://bootswatch.com/journal
-[8]: http://bootswatch.com/readable
-[9]: http://bootswatch.com/simplex
-[10]: http://bootswatch.com/slate
-[11]: http://bootswatch.com/spacelab
-[12]: http://bootswatch.com/spruce
-[13]: http://bootswatch.com/superhero
-[14]: http://bootswatch.com/united
-[15]: https://github.com/vincenttouzet/AdminBundle/blob/master/Resources/doc/installation.md
-[16]: https://github.com/KnpLabs/KnpMenu
+[2]: https://github.com/vincenttouzet/AdminBundle/blob/master/Resources/doc/installation.md
+[3]: https://github.com/KnpLabs/KnpMenu
