@@ -83,10 +83,11 @@ EOF
             }
         }
         $line = sprintf(
-            '%s <info>%s</info> : <comment>%s</comment>',
+            '%s <info>%s</info> : <comment>%s</comment> (%s)',
             $prefix,
             $menu->getName(),
-            $menu->getUri()
+            $menu->getUri(),
+            $menu->getTranslationDomain()
         );
         $output->writeln($line);
         foreach ($menu->getChildren() as $child) {
